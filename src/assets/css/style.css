@@ -18,7 +18,7 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0; min-height: 100vh; display: flex; flex-direction: column;
   font: 14px/1.6 var(--font-body); color: var(--ink);
-  background: var(--plaster) url("/assets/img/plaster.webp") center top / cover fixed no-repeat;
+  background: var(--plaster) url("../img/plaster.webp") center top / cover fixed no-repeat;
 }
 main { flex: 1; }
 img { max-width: 100%; }
@@ -145,7 +145,7 @@ body.page-film { background: #000; }
 body.page-contact main { background: #fff; }
 .contact-inner { max-width: var(--wrap); margin: 0 auto; padding: 20px 0 50px; display: grid; grid-template-columns: 300px 1fr; gap: 42px; align-items: start; }
 .contact-photo { width: 100%; height: auto; border: 2px solid #8a8a8a; display: block; }
-.bubble { position: relative; background: url("/media/thumb/site/speech-bubble.webp") center / 100% 100% no-repeat;
+.bubble { position: relative; background: url("../../media/thumb/site/speech-bubble.webp") center / 100% 100% no-repeat;
   aspect-ratio: 600 / 445; max-width: 470px; padding: 8% 12% 20%; text-align: center; color: #2b1b10; }
 .bubble h1 { font: 700 46px/1 var(--font-title); letter-spacing: .04em; margin: 0 0 6px; color: #2b1b10; }
 .bubble p { margin: 0; font: 20px/1.6 var(--font-body); }

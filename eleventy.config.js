@@ -1,5 +1,8 @@
 import fs from "node:fs";
 import * as yaml from "js-yaml";
+import { HtmlBasePlugin } from "@11ty/eleventy";
+
+const PATH_PREFIX = process.env.PATH_PREFIX || "/";
 
 const SIZES = { thumb: 700, medium: 1200, large: 2000 };
 
@@ -8,6 +11,12 @@ function loadMeta() {
 }
 
 export default function (eleventyConfig) {
+  // Rewrites root-relative URLs in HTML attributes (href/src/srcset) with PATH_PREFIX
+  eleventyConfig.addPlugin(HtmlBasePlugin);
+  // For URLs inside JSON/JS (lightbox data) that HtmlBasePlugin can't see
+  const pre = PATH_PREFIX.replace(/\/$/, "");
+  eleventyConfig.addFilter("pfx", (v) => typeof v === "string"
+    ? v.split(", ").map((u) => (u.startsWith("/") && !u.startsWith("//") ? pre + u : u)).join(", ") : v);
   eleventyConfig.addDataExtension("yml,yaml", (contents) => yaml.load(contents));
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
@@ -73,5 +82,6 @@ export default function (eleventyConfig) {
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
+    pathPrefix: PATH_PREFIX,
   };
 }

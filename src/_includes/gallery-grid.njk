@@ -26,7 +26,7 @@
 {%- for p in items -%}
 {%- set v = p.data.video | video -%}
 {"title": {{ p.data.title | json | safe }}, "description": {{ (p.data.description or "") | json | safe }},{% if p.data.price %} "price": {{ p.data.price | json | safe }},{% endif %}
- "images": [{% for im in p.data.images or [] %}{% set s = im | imgsize %}{"src": {{ im | img('large') | json | safe }}, "srcset": {{ im | srcset | json | safe }}, "w": {{ s.w }}, "h": {{ s.h }}}{% if not loop.last %},{% endif %}{% endfor %}],
+ "images": [{% for im in p.data.images or [] %}{% set s = im | imgsize %}{"src": {{ im | img('large') | pfx | json | safe }}, "srcset": {{ im | srcset | pfx | json | safe }}, "w": {{ s.w }}, "h": {{ s.h }}}{% if not loop.last %},{% endif %}{% endfor %}],
  "video": {{ (v | json | safe) if v else "null" }}}{% if not loop.last %},{% endif %}
 {%- endfor -%}
 ]</script>
