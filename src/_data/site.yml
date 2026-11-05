@@ -5,8 +5,8 @@ description: "Meirav Haber – Los Angeles based artist and award-winning stop-m
 url: "https://meiravhaber.com"
 # FormSubmit endpoint. After first activation, swap this for the random alias URL.
 form_endpoint: "https://formsubmit.co/meirav.bailey@gmail.com"
-instagram: "https://instagram.com/make_a_raven"
-instagram_handle: "@make_a_raven"
+instagram: "https://www.instagram.com/meiravhaber/"
+instagram_handle: "@meiravhaber"
 linkedin: "https://www.linkedin.com/pub/meirav-haber/47/270/547"
 imdb: "https://www.imdb.com/name/nm6242822/"
 # Turn on when there is something to sell (adds "Online Store" to the top menu)
