@@ -1,0 +1,32 @@
+---
+permalink: /contact/
+pageClass: contact
+pageTitle: Contact
+---
+{#- Contact form: the Wix form was replaced with a mailto button.
+    Optional later upgrade: a free Formspree form (formspree.io) – replace the
+    .contact-actions block with <form action="https://formspree.io/f/XXXX" method="POST">…</form>. -#}
+<section class="contact">
+  <div class="contact-inner">
+    <img class="contact-photo" src="{{ '/media/site/contact-photo.jpg' | img('medium') }}" alt="Meirav Haber holding her 2019 L.A.A.F. award for Sylvia" width="1333" height="2000">
+    <div class="contact-side">
+      <div class="bubble">
+        <h1>Contact Me!</h1>
+        <p><a href="mailto:{{ site.email }}?subject={{ site.email_subject | urlencode }}">{{ site.email }}</a></p>
+        <p><a href="{{ site.phone | telHref }}">{{ site.phone }}</a></p>
+      </div>
+      <div class="contact-actions">
+        <h2>Get in touch</h2>
+        <p>For commissions, contract work, and any other artistic inquiries or collaborations.</p>
+        <a class="btn-submit" href="mailto:{{ site.email }}?subject={{ site.email_subject | urlencode }}">
+          <img src="{{ '/media/site/paper-plane.png' | img('thumb') }}" alt="" width="46" height="25"> Email Meirav</a>
+      </div>
+      <div class="social">
+        <a href="{{ site.instagram }}" rel="noopener" aria-label="Instagram {{ site.instagram_handle }}"><img src="{{ '/media/site/icon-instagram.png' | img('thumb') }}" alt="Instagram" width="48" height="48"></a>
+        <a href="{{ site.linkedin }}" rel="noopener" aria-label="LinkedIn"><img src="{{ '/media/site/icon-linkedin.png' | img('thumb') }}" alt="LinkedIn" width="48" height="48"></a>
+        <a class="handle" href="{{ site.instagram }}" rel="noopener">{{ site.instagram_handle }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+<img class="the-end" src="{{ '/media/site/the-end.jpg' | img('medium') }}" srcset="{{ '/media/site/the-end.jpg' | srcset }}" sizes="100vw" alt="The End" loading="lazy">

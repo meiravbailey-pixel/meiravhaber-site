@@ -1,0 +1,32 @@
+{#- expects: items (array of project pages) -#}
+{%- set slides = [] -%}
+<ul class="grid">
+{%- for p in items -%}
+  {%- set v = p.data.video | video -%}
+  {%- set first = p.data.images[0] if (p.data.images and p.data.images.length) else "" -%}
+  {%- set sz = first | imgsize -%}
+  <li class="tile">
+    <button type="button" class="tile-btn" data-project="{{ loop.index0 }}" aria-label="Open {{ p.data.title }}">
+      <span class="tile-img">
+      {%- if first %}
+        <img src="{{ first | img('thumb') }}" alt="{{ p.data.title }}" width="{{ sz.w }}" height="{{ sz.h }}" loading="{{ 'eager' if loop.index <= 8 else 'lazy' }}" decoding="async">
+      {%- elif v and v.thumb %}
+        <img src="{{ v.thumb }}" alt="{{ p.data.title }}" loading="lazy">
+      {%- endif %}
+      {%- if v %}<span class="badge play" aria-hidden="true">&#9654;</span>{% endif %}
+      {%- if p.data.images and p.data.images.length > 1 %}<span class="badge count">{{ p.data.images.length }} photos</span>{% endif %}
+      </span>
+      <span class="tile-title">{{ p.data.title }}{% if p.data.price %} <span class="tile-price">{{ p.data.price }}</span>{% endif %}</span>
+      {%- if p.data.description %}<span class="tile-desc">{{ p.data.description }}</span>{% endif %}
+    </button>
+  </li>
+{%- endfor -%}
+</ul>
+<script type="application/json" id="gallery-data">[
+{%- for p in items -%}
+{%- set v = p.data.video | video -%}
+{"title": {{ p.data.title | json | safe }}, "description": {{ (p.data.description or "") | json | safe }},{% if p.data.price %} "price": {{ p.data.price | json | safe }},{% endif %}
+ "images": [{% for im in p.data.images or [] %}{% set s = im | imgsize %}{"src": {{ im | img('large') | json | safe }}, "srcset": {{ im | srcset | json | safe }}, "w": {{ s.w }}, "h": {{ s.h }}}{% if not loop.last %},{% endif %}{% endfor %}],
+ "video": {{ (v | json | safe) if v else "null" }}}{% if not loop.last %},{% endif %}
+{%- endfor -%}
+]</script>

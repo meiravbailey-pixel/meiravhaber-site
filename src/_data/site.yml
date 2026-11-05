@@ -1,0 +1,14 @@
+# Site-wide settings (editable in Pages CMS → "Site settings")
+title: "Meirav Haber | art | Los Angeles, CA, USA"
+name: "Meirav Haber"
+description: "Meirav Haber – Los Angeles based artist and award-winning stop-motion filmmaker: character fabrication, puppets, props, painting, drawing and sculpting/building."
+url: "https://meiravhaber.com"
+email: "meirav.bailey@gmail.com"
+email_subject: "Art Inquiry"
+phone: "818-624-7144"
+instagram: "https://instagram.com/make_a_raven"
+instagram_handle: "@make_a_raven"
+linkedin: "https://www.linkedin.com/pub/meirav-haber/47/270/547"
+imdb: "https://www.imdb.com/name/nm6242822/"
+# Turn on when there is something to sell (adds "Online Store" to the top menu)
+show_store: false

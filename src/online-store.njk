@@ -1,0 +1,11 @@
+---
+pageClass: gallery
+pageTitle: Online Store
+scripts: [lightbox.js]
+---
+{#- Hidden until site.show_store is true (Site settings). Items = projects with category "online-store". -#}
+{%- set items = collections.projectsSorted | inCategory("online-store") -%}
+<section class="panel gallery-panel">
+  <h1 class="page-title">Online Store</h1>
+  {%- if items.length %}{% include "gallery-grid.njk" %}{% else %}<p class="empty">New pieces coming soon. <a href="mailto:{{ site.email }}">Email Meirav</a> about commissions.</p>{% endif %}
+</section>

@@ -1,0 +1,14 @@
+# Gallery pages. "key" must match the category chosen on each project.
+# "url" keeps the old Wix addresses working.
+- key: character-fabrication
+  label: Character Fabrication
+  url: /character-fabrication/
+- key: painting
+  label: Painting
+  url: /painting/
+- key: drawing
+  label: Drawing
+  url: /prop-building/
+- key: sculpting
+  label: Sculpting/Building
+  url: /sculpting/

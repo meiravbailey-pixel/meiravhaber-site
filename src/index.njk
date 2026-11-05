@@ -1,0 +1,19 @@
+---
+permalink: /
+pageClass: home
+scripts: [slideshow.js]
+---
+<section class="hero" aria-roledescription="carousel" aria-label="Selected work">
+  <div class="hero-track">
+  {%- for s in home.slides %}
+    <figure class="hero-slide{% if loop.first %} is-active{% endif %}" aria-label="Slide {{ loop.index }} of {{ home.slides.length }}">
+      <img src="{{ s | img('medium') }}" srcset="{{ s | srcset }}" sizes="100vw" alt="Work by Meirav Haber ({{ loop.index }})"{% if not loop.first %} loading="lazy"{% else %} fetchpriority="high"{% endif %} decoding="async">
+    </figure>
+  {%- endfor %}
+  </div>
+  <button class="hero-arrow prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 20 40" aria-hidden="true"><polyline points="18,2 2,20 18,38"/></svg></button>
+  <button class="hero-arrow next" type="button" aria-label="Next slide"><svg viewBox="0 0 20 40" aria-hidden="true"><polyline points="2,2 18,20 2,38"/></svg></button>
+  <div class="hero-dots" role="tablist">
+  {%- for s in home.slides %}<button type="button" role="tab" aria-label="Go to slide {{ loop.index }}"{% if loop.first %} aria-selected="true"{% endif %}></button>{% endfor %}
+  </div>
+</section>

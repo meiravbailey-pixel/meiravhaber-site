@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if pageTitle %}{{ pageTitle }} | {{ site.name }}{% else %}{{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ description or site.description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:title" content="{{ pageTitle or site.title }}">
+<meta property="og:description" content="{{ description or site.description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+{% if ogImage %}<meta property="og:image" content="{{ site.url }}{{ ogImage | img('medium') }}">{% endif %}
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Sofia&family=Playfair+Display:ital,wght@1,700&display=swap">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body class="page-{{ pageClass or 'default' }}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="hdr-frame">
+    <div class="hdr-inner">
+      <a class="logo" href="/" aria-label="Meirav Haber – home">{{ site.name }}</a>
+      <nav class="nav-main" aria-label="Main">
+        {%- set mainNav = [["Home","/"],["Films","/film/"],["About","/about/"],["Contact","/contact/"]] -%}
+        {%- for item in mainNav %}
+        <a href="{{ item[1] }}"{% if page.url == item[1] %} aria-current="page"{% endif %}>{{ item[0] }}</a>
+        {%- endfor %}
+        {%- if site.show_store %}
+        <a href="/online-store/"{% if page.url == "/online-store/" %} aria-current="page"{% endif %}>Online Store</a>
+        {%- endif %}
+      </nav>
+      <nav class="nav-sub" aria-label="Work">
+        {%- for c in categories %}
+        <a href="{{ c.url }}"{% if page.url == c.url %} aria-current="page"{% endif %}>{{ c.label }}</a>
+        {%- endfor %}
+        <a href="/film/">Animation</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<main id="main">
+{{ content | safe }}
+</main>
+<footer class="site-footer">
+  <span>&copy; {{ "" | year }} {{ site.name }}</span>
+  <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+  <a href="{{ site.instagram }}" rel="noopener">Instagram {{ site.instagram_handle }}</a>
+</footer>
+{% if scripts %}{% for s in scripts %}<script src="/assets/js/{{ s }}" defer></script>{% endfor %}{% endif %}
+</body>
+</html>

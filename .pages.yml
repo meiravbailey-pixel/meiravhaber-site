@@ -1,0 +1,133 @@
+# Pages CMS (https://pagescms.org) – the simple editor for this site.
+# Log in at app.pagescms.org with GitHub, pick this repo, and edit.
+media:
+  input: media
+  output: /media
+  rename: safe
+
+content:
+  - name: projects
+    label: Artwork / Projects
+    type: collection
+    path: src/projects
+    filename: "{fields.category}-{primary}.md"
+    view:
+      fields: [title, category, order]
+      primary: title
+      sort: [category, order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: category
+        label: Category (which page it shows on)
+        type: select
+        required: true
+        default: character-fabrication
+        options:
+          values:
+            - { name: character-fabrication, label: Character Fabrication }
+            - { name: painting, label: Painting }
+            - { name: drawing, label: Drawing }
+            - { name: sculpting, label: Sculpting/Building }
+            - { name: online-store, label: Online Store (hidden until the store is turned on) }
+      - name: description
+        label: Description
+        type: text
+      - name: images
+        label: Photos (first one is the thumbnail – drag to reorder)
+        type: image
+        list: true
+        options:
+          multiple: true
+      - name: video
+        label: Video link (optional – paste a YouTube or Vimeo URL)
+        type: string
+        pattern:
+          regex: '^$|^https?://(www\.)?(youtube\.com|youtu\.be|vimeo\.com|player\.vimeo\.com)/.+'
+          message: Paste a full YouTube or Vimeo link, or leave empty.
+      - name: project_date
+        label: Date (optional)
+        type: date
+      - name: order
+        label: Order on the page (smaller numbers first)
+        type: number
+        default: 500
+      - name: price
+        label: Price (only for Online Store items, e.g. $250)
+        type: string
+      - name: body
+        label: Extra notes (not shown yet)
+        type: rich-text
+        hidden: true
+
+  - name: films
+    label: Films
+    type: collection
+    path: src/films
+    view:
+      fields: [title, year, order]
+      primary: title
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: year, label: Year, type: string }
+      - { name: heading, label: Heading above the video (optional, e.g. "SOULSTICE"-COMING SOON), type: string }
+      - { name: video, label: Video link (YouTube or Vimeo), type: string }
+      - { name: link_label, label: Button text (optional), type: string }
+      - { name: link_url, label: Button link (optional), type: string }
+      - name: laurels
+        label: Festival laurels (left, right, left, right… extra ones go in the bottom row)
+        type: image
+        list: true
+        options:
+          multiple: true
+      - { name: order, label: Order (smaller first), type: number }
+
+  - name: home
+    label: Home page slideshow
+    type: file
+    path: src/_data/home.yml
+    format: yaml
+    fields:
+      - name: slides
+        label: Slides
+        type: image
+        list: true
+        options:
+          multiple: true
+
+  - name: about
+    label: About page
+    type: file
+    path: src/about.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: layouts/about.njk }
+      - { name: permalink, type: string, hidden: true, default: /about/ }
+      - { name: pageClass, type: string, hidden: true, default: about }
+      - { name: pageTitle, type: string, hidden: true, default: About }
+      - { name: background, label: Background photo, type: image }
+      - { name: avatar, label: Small picture above the button, type: image }
+      - { name: body, label: About text, type: rich-text }
+
+  - name: settings
+    label: Site settings (email, phone, links)
+    type: file
+    path: src/_data/site.yml
+    format: yaml
+    fields:
+      - { name: title, label: Browser tab title, type: string }
+      - { name: name, label: Name, type: string }
+      - { name: description, label: Search-engine description, type: text }
+      - { name: url, label: Site address, type: string }
+      - { name: email, label: Email, type: string }
+      - { name: email_subject, label: Email subject for the contact button, type: string }
+      - { name: phone, label: Phone, type: string }
+      - { name: instagram, label: Instagram link, type: string }
+      - { name: instagram_handle, label: Instagram handle, type: string }
+      - { name: linkedin, label: LinkedIn link, type: string }
+      - { name: imdb, label: IMDB link, type: string }
+      - { name: show_store, label: Show the Online Store page, type: boolean }

@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+---
+<section class="about" style="--about-bg: url('{{ background | img('large') }}')">
+  <div class="about-box">
+    <span class="tape tape-l" aria-hidden="true"></span><span class="tape tape-r" aria-hidden="true"></span>
+    <div class="about-text">{{ content | safe }}</div>
+    {%- if avatar %}<img class="about-avatar" src="{{ avatar | img('thumb') }}" alt="" width="80" height="80">{% endif %}
+    <a class="btn-wood" href="/contact/">Contact Meirav</a>
+  </div>
+</section>

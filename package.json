@@ -1,0 +1,18 @@
+{
+  "name": "meiravhaber-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "images": "node scripts/optimize-images.mjs",
+    "build": "node scripts/optimize-images.mjs && eleventy",
+    "serve": "node scripts/optimize-images.mjs && eleventy --serve"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "js-yaml": "^5.5.0",
+    "sharp": "^0.33.5"
+  }
+}

@@ -1,0 +1,13 @@
+# Home page slideshow. Order = order shown.
+slides:
+  - "/media/home/slide-01.jpg"
+  - "/media/home/slide-02.jpg"
+  - "/media/home/slide-03.jpg"
+  - "/media/home/slide-04.jpg"
+  - "/media/home/slide-05.jpg"
+  - "/media/home/slide-06.jpg"
+  - "/media/home/slide-07.jpg"
+  - "/media/home/slide-08.jpg"
+  - "/media/home/slide-09.jpg"
+  - "/media/home/slide-10.jpg"
+  - "/media/home/slide-11.jpg"
