@@ -26,7 +26,7 @@ pageTitle: Films
     {%- endif %}{% endfor %}
   </div>
   {%- if laurels.length > 6 %}
-  <div class="laurel-row">
+  <div class="laurel-row{% if laurels.length == 13 %} laurel-row-7{% endif %}">
     {%- for l in laurels %}{% if loop.index0 >= 6 %}<img class="laurel" src="{{ l | img('thumb') }}" alt="Festival laurel for {{ f.data.title }}" loading="lazy">{% endif %}{% endfor %}
   </div>
   {%- endif %}
