@@ -114,7 +114,7 @@ content:
       - { name: body, label: About text, type: rich-text }
 
   - name: settings
-    label: Site settings (email, phone, links)
+    label: Site settings (links)
     type: file
     path: src/_data/site.yml
     format: yaml
@@ -123,9 +123,7 @@ content:
       - { name: name, label: Name, type: string }
       - { name: description, label: Search-engine description, type: text }
       - { name: url, label: Site address, type: string }
-      - { name: email, label: Email, type: string }
-      - { name: email_subject, label: Email subject for the contact button, type: string }
-      - { name: phone, label: Phone, type: string }
+      - { name: form_endpoint, label: FormSubmit endpoint (use random alias after activation), type: string }
       - { name: instagram, label: Instagram link, type: string }
       - { name: instagram_handle, label: Instagram handle, type: string }
       - { name: linkedin, label: LinkedIn link, type: string }

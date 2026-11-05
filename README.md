@@ -24,7 +24,7 @@ Other sections:
 - **Films:** the films page, with its videos and festival laurels.
 - **Home page slideshow**
 - **About page**
-- **Site settings:** email, phone, Instagram and the other links.
+- **Site settings:** Instagram, LinkedIn, and the FormSubmit endpoint.
 
 Photos can be uploaded straight from a phone. The build makes web-sized WebP copies at most 2000px wide, plus thumbnails, so file size doesn't matter much. Uploads should be under about 20 MB each.
 
@@ -57,18 +57,13 @@ npm run serve      # http://localhost:8080
 npm run build      # outputs to _site/
 ```
 
-## Contact form (optional upgrade)
+## Contact form
 
-The contact page uses an **Email Meirav** (mailto) button plus the email address, phone and Instagram.
+The Contact page posts to [FormSubmit](https://formsubmit.co) (no account needed).
+The endpoint lives in `src/_data/site.yml` as `form_endpoint`. After Meirav confirms
+the first activation email, FormSubmit gives a random alias — put that URL in
+`form_endpoint` so her address is no longer in the page source.
 
-To get a real form without a backend:
-
-1. Create a free form at https://formspree.io.
-2. In `src/contact.njk`, replace the mailto block with:
-
-```html
-<form action="https://formspree.io/f/XXXXXXX" method="POST">…</form>
-```
 
 ## Online Store (later)
 

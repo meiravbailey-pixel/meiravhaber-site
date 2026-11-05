@@ -3,24 +3,44 @@ permalink: /contact/
 pageClass: contact
 pageTitle: Contact
 ---
-{#- Contact form: the Wix form was replaced with a mailto button.
-    Optional later upgrade: a free Formspree form (formspree.io) – replace the
-    .contact-actions block with <form action="https://formspree.io/f/XXXX" method="POST">…</form>. -#}
+{#- Contact form posts to FormSubmit (no account needed). First real submit
+    triggers an activation email to Meirav; after she confirms, FormSubmit
+    issues a random alias — swap that into site.form_endpoint. Do not put her
+    address anywhere else on the site. -#}
 <section class="contact">
   <div class="contact-inner">
     <img class="contact-photo" src="{{ '/media/site/contact-photo.jpg' | img('medium') }}" alt="Meirav Haber holding her 2019 L.A.A.F. award for Sylvia" width="1333" height="2000">
     <div class="contact-side">
       <div class="bubble">
         <h1>Contact Me!</h1>
-        <p><a href="mailto:{{ site.email }}?subject={{ site.email_subject | urlencode }}">{{ site.email }}</a></p>
-        <p><a href="{{ site.phone | telHref }}">{{ site.phone }}</a></p>
+        <p class="bubble-lead">For commissions, contract work, and collaborations.</p>
       </div>
-      <div class="contact-actions">
-        <h2>Get in touch</h2>
-        <p>For commissions, contract work, and any other artistic inquiries or collaborations.</p>
-        <a class="btn-submit" href="mailto:{{ site.email }}?subject={{ site.email_subject | urlencode }}">
-          <img src="{{ '/media/site/paper-plane.png' | img('thumb') }}" alt="" width="46" height="25"> Email Meirav</a>
-      </div>
+      <form class="contact-form" action="{{ site.form_endpoint }}" method="POST" onsubmit="this.querySelector('[name=_replyto]').value=this.querySelector('[name=email]').value">
+        <input type="hidden" name="_subject" value="New message from meiravhaber.com">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="{{ site.url }}/contact/thanks/">
+        <input type="hidden" name="_replyto" value="">
+        {#- Honeypot: bots fill this; FormSubmit silently drops the submit. -#}
+        <label class="hp" aria-hidden="true">Leave blank
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+        </label>
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required autocomplete="name" maxlength="120">
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required autocomplete="email" maxlength="200">
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" required rows="5" maxlength="5000"></textarea>
+        </label>
+        <button class="btn-submit" type="submit">
+          <img src="{{ '/media/site/paper-plane.png' | img('thumb') }}" alt="" width="46" height="25"> Send message
+        </button>
+      </form>
       <div class="social">
         <a href="{{ site.instagram }}" rel="noopener" aria-label="Instagram {{ site.instagram_handle }}"><img src="{{ '/media/site/icon-instagram.png' | img('thumb') }}" alt="Instagram" width="48" height="48"></a>
         <a href="{{ site.linkedin }}" rel="noopener" aria-label="LinkedIn"><img src="{{ '/media/site/icon-linkedin.png' | img('thumb') }}" alt="LinkedIn" width="48" height="48"></a>
