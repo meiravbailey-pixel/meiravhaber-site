@@ -35,7 +35,7 @@ jobs:
       - run: npm run build
         env:
           # Preview lives at /meiravhaber-site/; set to "/" when meiravhaber.com points here
-          PATH_PREFIX: /meiravhaber-site/
+          PATH_PREFIX: /
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
