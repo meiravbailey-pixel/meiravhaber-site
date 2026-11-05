@@ -22,12 +22,12 @@ pageTitle: Films
       {%- endif %}
     </div>
     {%- for l in laurels %}{% if loop.index0 < 6 %}
-    <img class="laurel {{ 'side-l' if loop.index0 % 2 == 0 else 'side-r' }}" style="grid-row: {{ (loop.index0 // 2) + 1 }}" src="{{ l | img('thumb') }}" alt="Festival laurel for {{ f.data.title }}" loading="lazy">
+    <span class="laurel-frame"><img class="laurel {{ 'side-l' if loop.index0 % 2 == 0 else 'side-r' }}" style="grid-row: {{ (loop.index0 // 2) + 1 }}" src="{{ l | img('thumb') }}" alt="Festival laurel for {{ f.data.title }}" loading="lazy"></span>
     {%- endif %}{% endfor %}
   </div>
   {%- if laurels.length > 6 %}
-  <div class="laurel-row">
-    {%- for l in laurels %}{% if loop.index0 >= 6 %}<img class="laurel" src="{{ l | img('thumb') }}" alt="Festival laurel for {{ f.data.title }}" loading="lazy">{% endif %}{% endfor %}
+  <div class="laurel-row{% if laurels.length == 13 %} laurel-row-7{% endif %}">
+    {%- for l in laurels %}{% if loop.index0 >= 6 %}<span class="laurel-frame"><img class="laurel" src="{{ l | img('thumb') }}" alt="Festival laurel for {{ f.data.title }}" loading="lazy"></span>{% endif %}{% endfor %}
   </div>
   {%- endif %}
 </section>
